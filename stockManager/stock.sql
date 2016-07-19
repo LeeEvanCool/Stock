@@ -1,3 +1,4 @@
+create table stock;
 /*
 Navicat MySQL Data Transfer
 
