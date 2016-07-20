@@ -22,7 +22,7 @@ public class StockMain {
 	public static final String STOCKTABLEDAY = "xx_stock_day_data";
 	public static void main(String[] args) {
 		if(args == null || args.length <= 0){
-			System.out.println("方法带参数：1、当天数据。2、实时数据");
+			System.out.println("方法带参数：1、实时数据。2、当天数据");
 			return;
 		}
 		String str = args[0];
