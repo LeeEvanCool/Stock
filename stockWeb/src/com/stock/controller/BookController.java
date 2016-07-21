@@ -9,13 +9,12 @@ import com.stock.entity.Book;
 import com.stock.service.BookService;
 
 @Controller("bookController")
-@RequestMapping("/test")
 public class BookController {
 
 	@Resource(name = "bookServiceImpl")
 	private BookService bookService;
 
-	@RequestMapping("saveBook.action")
+	@RequestMapping("/saveBook")
 	public void save(){
 		Book book = new Book();
 		book.setName("java编程思想");
