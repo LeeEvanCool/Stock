@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.stock.entity.Book;
 import com.stock.service.BookService;
@@ -14,13 +15,12 @@ public class BookController {
 	@Resource(name = "bookServiceImpl")
 	private BookService bookService;
 
-	@RequestMapping("/saveBook")
-	public void save(){
-		Book book = new Book();
-		book.setName("java编程思想");
-		book.setPrice(23.5d);
-		book.setSn("201607210354");
-		
+	@RequestMapping(value = "/saveBook", method = RequestMethod.POST)
+	public String save(Book book){
+		System.out.println(book.getName());
+		System.out.println(book.getSn());
+		System.out.println(book.getPrice());
 		bookService.save(book);
+		return "redirect:/jsp/bookTest.jsp";
 	}
 }
