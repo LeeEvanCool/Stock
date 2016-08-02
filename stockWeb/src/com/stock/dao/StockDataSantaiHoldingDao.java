@@ -1,7 +1,12 @@
 package com.stock.dao;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 
-public interface StockDataSantaiHoldingDao<T, ID extends Serializable> {
+@SuppressWarnings("hiding")
+public interface StockDataSantaiHoldingDao<StockDataSantaiHolding, Long extends Serializable> {
+	
+	List<Object[]> findList(Date startDate, Date endDate);
 	
 }

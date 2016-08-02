@@ -1,5 +1,8 @@
 package com.stock.service.impl;
 
+import java.util.Date;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -12,6 +15,11 @@ public class StockDataSantaiHoldingServiceImpl implements StockDataSantaiHolding
 	@SuppressWarnings("rawtypes")
 	@Resource(name = "stockDataSantaiHoldingDaoImpl")
 	private StockDataSantaiHoldingDao stockDataSantaiHoldingDao;
-	
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Object[]> findList(Date startDate, Date endDate) {
+		return stockDataSantaiHoldingDao.findList(startDate, endDate);
+	}
 	
 }
