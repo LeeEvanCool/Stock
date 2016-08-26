@@ -56,6 +56,11 @@ public class StockMain {
 			System.out.println("参数不正确");
 		}
 	}
+	/**
+	 * 获取股票信息
+	 * 
+	 * @return List<Map<String,String>>
+	 */
 	private static List<Map<String, String>> getStackValue(){
 		Connection conn = null;
 		PreparedStatement prepareStatement = null;
