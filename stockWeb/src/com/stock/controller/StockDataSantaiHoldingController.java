@@ -22,7 +22,7 @@ public class StockDataSantaiHoldingController {
 	private StockDataSantaiHoldingService stockDataSantaiHoldingService;
 	
 	@SuppressWarnings("unchecked")
-	@RequestMapping(value = "/findList", method = RequestMethod.GET)
+	@RequestMapping(value = "/findList", method = RequestMethod.POST)
 	public @ResponseBody SDataSantaiHolding findList(Date startDate, Date endDate){
 		if(startDate == null){
 			startDate = new Date();

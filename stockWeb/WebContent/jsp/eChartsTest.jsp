@@ -9,9 +9,18 @@
 <title>Echarts测试</title>
 <script type="text/javascript">
 $().ready(function() {
-	delRow();
+	$.ajax({
+		url: "../findList.do",
+		type: "POST",
+		data: {},
+		dataType: "json",
+		cache: false,
+		success: function(data) {
+			delRow(data.name, data.xdata, data.data);
+		}
+	});
 });
-function delRow(){
+function delRow(name, xdata, data){
 	//基于准备好的dom，初始化echarts图表
 	var myChart = echarts.init(document.getElementById('main'));
 
@@ -24,7 +33,7 @@ function delRow(){
 		        trigger: 'axis'
 		    },
 		    legend: {
-		        data:['最高气温','最低气温']
+		        data:[name]
 		    },
 		    toolbox: {
 		        show : true,
@@ -41,22 +50,24 @@ function delRow(){
 		        {
 		            type : 'category',
 		            boundaryGap : false,
-		            data : ['周一','周二','周三','周四','周五','周六','周日']
+		            data : xdata
 		        }
 		    ],
 		    yAxis : [
 		        {
-		            type : 'value',
-		            axisLabel : {
-		                formatter: '{value}'
-		            }
+		        	type: 'value',
+	                scale: true,
+	                precision: 2,
+	                splitNumber: 9,
+	                boundaryGap: [0.01, 0.01],
+	                splitArea: { show: true } 
 		        }
 		    ],
 		    series : [
 		        {
-		            name:'最高气温',
+		            name:'最高',
 		            type:'line',
-		            data:[11, 11, 15, 13, 12, 13, 10],
+		            data:data,
 		            markPoint : {
 		                data : [
 		                    {type : 'max', name: '最大值'},
@@ -66,22 +77,6 @@ function delRow(){
 		            markLine : {
 		                data : [
 		                    {type : 'average', name: '平均值'}
-		                ]
-		            }
-		        },
-		        {
-		            name:'最低气温',
-		            type:'line',
-		            data:[1, -21, 2, 5, 3, 22, 0],
-		            markPoint : {
-		                data : [
-		                    {type : 'max', name: '最大值'},
-		                    {type : 'min', name: '最小值'}
-		                ]
-		            },
-		            markLine : {
-		                data : [
-		                    {type : 'average', name : '平均值'}
 		                ]
 		            }
 		        }

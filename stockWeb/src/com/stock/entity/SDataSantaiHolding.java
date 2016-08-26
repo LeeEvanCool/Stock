@@ -1,10 +1,13 @@
 package com.stock.entity;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SDataSantaiHolding {
+public class SDataSantaiHolding implements Serializable{
+	private static final long serialVersionUID = 7920073118481970221L;
+	
 	private String name;
 	private List<String> xdata = new ArrayList<String>();
 	private List<Double> data = new ArrayList<Double>();
