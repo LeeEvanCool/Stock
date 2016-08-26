@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,6 +16,8 @@ import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import pers.lxy.database.DBManager;
+
 public class StockMain {
 	
 	/** 基本请求url */
@@ -24,7 +25,7 @@ public class StockMain {
 	/** 表名 */
 	public static final String STOCKTABLEDAY = "xx_stock_day_data";
 	/** 数据 */
-	public static final String STOCKCODETABLE = "xx_stock_code_table";
+	public static final String STOCKCODETABLE = "xx_stock_code_table_tmp";
 	
 	public static void main(String[] args) {
 		if(args == null || args.length <= 0){
@@ -61,11 +62,7 @@ public class StockMain {
 		ResultSet resultSet = null;
 		List<Map<String, String>> result = new ArrayList<Map<String, String>>();
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/stock";
-			String username = "root";
-			String password = "";
-			conn = DriverManager.getConnection(url, username, password);
+			conn = DBManager.getConnection();
 			String sql = "select stock_code, stock_name, stock_table from " + STOCKCODETABLE + " where is_enable = '1' ";
 			prepareStatement = conn.prepareStatement(sql);
 			resultSet = prepareStatement.executeQuery();
@@ -200,11 +197,7 @@ public class StockMain {
 			Connection conn = null;
 			PreparedStatement prepareStatement = null;
 			try {
-				Class.forName("com.mysql.jdbc.Driver");
-				String url = "jdbc:mysql://localhost:3306/stock";
-				String username = "root";
-				String password = "";
-				conn = DriverManager.getConnection(url, username, password);
+				conn = DBManager.getConnection();
 				String sql = "insert into "
 						+ stockTable
 						+ " (create_datetime, stock_value_date, stock_value_time, stock_value) values (?, ?, ?, ?)";
@@ -251,11 +244,7 @@ public class StockMain {
 			Connection conn = null;
 			PreparedStatement prepareStatement = null;
 			try {
-				Class.forName("com.mysql.jdbc.Driver");
-				String url = "jdbc:mysql://localhost:3306/stock";
-				String username = "root";
-				String password = "";
-				conn = DriverManager.getConnection(url, username, password);
+				conn = DBManager.getConnection();
 				String sql = "insert into "
 						+ STOCKTABLEDAY
 						+ " (create_datetime, stock_value_date, stock_value_time, stock_code, stock_name, today_open_value, yesterday_close_value, today_high_value, today_low_value) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
