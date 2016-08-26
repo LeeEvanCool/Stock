@@ -1,6 +1,6 @@
-INSERT INTO `xx_stock_code_table` VALUES ('11', 'sz002312', '三泰控股', 'xx_stock_data_santai_holding','1');
-INSERT INTO `xx_stock_code_table` VALUES ('12', 'sh600130', '波导股份', 'xx_stock_data_bodao_gufen','1');
-INSERT INTO `xx_stock_code_table` VALUES ('13', 'sh601766', '中国中车', 'xx_stock_data_china_crrc','1');
+INSERT INTO xx_stock_code_table(stock_code,stock_name,stock_table,is_enable) VALUES ('sz002312', '三泰控股', 'xx_stock_data_santai_holding','1');
+INSERT INTO xx_stock_code_table(stock_code,stock_name,stock_table,is_enable) VALUES ('sh600130', '波导股份', 'xx_stock_data_bodao_gufen','1');
+INSERT INTO xx_stock_code_table(stock_code,stock_name,stock_table,is_enable) VALUES ('sh601766', '中国中车', 'xx_stock_data_china_crrc','1');
 
 DROP TABLE IF EXISTS `xx_stock_data_santai_holding`;
 CREATE TABLE `xx_stock_data_santai_holding` (
