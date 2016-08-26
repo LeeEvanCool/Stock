@@ -24,7 +24,7 @@ public class StockMain {
 	/** 表名 */
 	public static final String STOCKTABLEDAY = "xx_stock_day_data";
 	/** 数据 */
-	public static final String STOCKCODETABLE = "xx_stock_code_table_tmp";
+	public static final String STOCKCODETABLE = "xx_stock_code_table";
 	
 	public static void main(String[] args) {
 		if (args == null || args.length <= 0) {
